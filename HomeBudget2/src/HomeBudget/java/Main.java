@@ -1,6 +1,7 @@
 package HomeBudget.java;
 
 import HomeBudget.java.controller.LoginController;
+import HomeBudget.java.controller.MainController;
 import HomeBudget.java.model.Navigation;
 import java.*;
 import javafx.application.Application;
@@ -25,7 +26,7 @@ public class Main extends Application {
         primaryStage.show();
 
         //navigate to first view
-        Main.getNavigation().load(LoginController.URL_FXML).Show();
+        Main.getNavigation().load(MainController.URL_FXML).Show();
     }
 
 

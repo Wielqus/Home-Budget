@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="main-container" stylesheets="@../style/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeBudget.java.controller.MainController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="ALWAYS" maxWidth="300.0" minWidth="100.0" prefWidth="200.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="728.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="549.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <GridPane alignment="CENTER" prefHeight="556.0" prefWidth="246.0" styleClass="menu" stylesheets="@../style/main.css">
+        <columnConstraints>
+          <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" prefWidth="400.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="400.0" minHeight="20.0" prefHeight="100.0" valignment="TOP" vgrow="ALWAYS" />
+          <RowConstraints maxHeight="400.0" minHeight="20.0" prefHeight="100.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="400.0" minHeight="20.0" prefHeight="100.0" valignment="CENTER" vgrow="ALWAYS" />
+          <RowConstraints maxHeight="400.0" minHeight="20.0" prefHeight="100.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="400.0" minHeight="20.0" prefHeight="100.0" valignment="CENTER" vgrow="ALWAYS" />
+        </rowConstraints>
+         <children>
+            <JFXButton fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" onAction="#goToHome" prefHeight="200.0" prefWidth="300.0" ripplerFill="WHITE" stylesheets="@../style/main.css" text="Home" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <styleClass>
+                  <String fx:value="menu-item" />
+                  <String fx:value="positive" />
+               </styleClass></JFXButton>
+            <JFXButton fx:id="incomeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="15.0" onAction="#goToIncome" prefHeight="200.0" prefWidth="300.0" ripplerFill="WHITE" styleClass="menu-item" stylesheets="@../style/main.css" text="Wpływy" textAlignment="CENTER" GridPane.rowIndex="1">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="expensesButton" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="115.0" onAction="#goToExpenses" prefHeight="200.0" prefWidth="300.0" ripplerFill="WHITE" styleClass="menu-item" stylesheets="@../style/main.css" text="Wydatki" textAlignment="CENTER" GridPane.rowIndex="2">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="raportsButton" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="215.0" onAction="#goToRaports" prefHeight="200.0" prefWidth="300.0" ripplerFill="WHITE" styleClass="menu-item" stylesheets="@../style/main.css" text="Raporty" textAlignment="CENTER" GridPane.rowIndex="3">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="historyButton" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="215.0" onAction="#goToHistory" prefHeight="200.0" prefWidth="300.0" ripplerFill="WHITE" styleClass="menu-item" stylesheets="@../style/main.css" text="Historia" textAlignment="CENTER" GridPane.rowIndex="4">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+         <padding>
+            <Insets top="1.0" />
+         </padding>
+      </GridPane>
+      <BorderPane fx:id="MainView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="main-view" GridPane.columnIndex="1" />
+   </children>
+</GridPane>

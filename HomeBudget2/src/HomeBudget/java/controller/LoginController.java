@@ -46,7 +46,7 @@ public class LoginController extends BaseController implements Initializable {
 
     @FXML
     private void LoginAction(ActionEvent event) {
-
+        Main.getNavigation().load(MainController.URL_FXML).Show();
     }
 
     @FXML
