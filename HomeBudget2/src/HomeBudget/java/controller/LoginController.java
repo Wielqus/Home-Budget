@@ -6,6 +6,9 @@
 package HomeBudget.java.controller;
 
 import HomeBudget.java.Main;
+import HomeBudget.java.model.Navigation;
+import HomeBudget.java.model.Users;
+import com.jfoenix.controls.JFXSpinner;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +19,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 
 /**
@@ -46,7 +55,15 @@ public class LoginController extends BaseController implements Initializable {
 
     @FXML
     private void LoginAction(ActionEvent event) {
-        Main.getNavigation().load(MainController.URL_FXML).Show();
+        int userId = Users.Login(LoginText.getText(), PasswordText.getText());
+        if(userId !=0){
+            Main.getNavigation().load(MainController.URL_FXML).Show();
+            return;
+        }else{
+            InfoLabel.setText("Podane dane są nieprawidłowe");
+            return;
+        }
+        
     }
 
     @FXML

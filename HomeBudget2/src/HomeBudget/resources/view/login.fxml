@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <GridPane prefHeight="474.0" prefWidth="665.0" stylesheets="@../style/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeBudget.java.controller.LoginController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -26,20 +25,20 @@
    <children>
       <VBox alignment="CENTER" prefHeight="254.0" prefWidth="366.0" stylesheets="@../main.css" GridPane.columnIndex="1">
          <children>
-            <Label prefHeight="25.0" prefWidth="398.0" styleClass="RegisterLabel" text="Login">
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="398.0" styleClass="RegisterLabel" text="Login">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
             <TextField fx:id="LoginText" promptText="Login" styleClass="RegisterInput" />
-            <Label prefHeight="25.0" prefWidth="460.0" styleClass="RegisterLabel" text="Password">
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="460.0" styleClass="RegisterLabel" text="Password">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
             <PasswordField fx:id="PasswordText" promptText="Password" styleClass="RegisterInput" />
-            <Label fx:id="InfoLabel" prefHeight="10.0" prefWidth="366.0" styleClass="RegisterError" />
-            <Button fx:id="RegisterButton" alignment="CENTER" mnemonicParsing="false" onAction="#LoginAction" prefHeight="110.0" prefWidth="366.0" styleClass="RegisterButton" text="Login" textAlignment="CENTER">
+            <Label fx:id="InfoLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="398.0" styleClass="RegisterError" />
+            <Button fx:id="RegisterButton" alignment="CENTER" mnemonicParsing="false" onAction="#LoginAction" prefHeight="50.0" prefWidth="400.0" styleClass="RegisterButton" text="Login" textAlignment="CENTER">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
