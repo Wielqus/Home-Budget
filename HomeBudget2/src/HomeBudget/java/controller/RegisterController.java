@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package HomeBudget.java.controller;
 
-import HomeBudget.java.Main;
+import HomeBudget.java.model.Navigation;
 import HomeBudget.java.model.Users;
 import java.io.IOException;
 import java.net.URL;
@@ -62,11 +57,16 @@ public class RegisterController extends BaseController implements Initializable 
             return;
         }
         if (Users.Register(Login, Password)) {
-            Main.getNavigation().load(LoginController.URL_FXML).Show();
+            Navigation.getNavigation().load(LoginController.URL_FXML).Show();
             return;
         }
         InfoLabel.setText("Podany użytkownik juz istnieje");
         return;
+    }
+
+    @FXML
+    private void goToLoginAction(ActionEvent event) {
+        Navigation.getNavigation().load(LoginController.URL_FXML).Show();
     }
 
 }
