@@ -1,0 +1,13 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+       "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping >
+   <class name="HomeBudget.java.model.Expenses" table="Expenses">
+       <id name="id" type="int"/>
+       <property name="id_main" type="int"/>
+       <property name="name" type="string"/>
+       <property name="person" type="int"/>
+       <property name="category" type="int"/>      
+       <property name="date" type="date"/>
+   </class>
+</hibernate-mapping>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import com.jfoenix.controls.JFXSpinner?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="758.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+    <ColumnConstraints />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints fillHeight="false" maxHeight="127.0" minHeight="73.0" prefHeight="73.0" />
+      <RowConstraints maxHeight="399.0" minHeight="10.0" prefHeight="311.0" vgrow="ALWAYS" />
+      <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="177.0" valignment="BOTTOM" />
+  </rowConstraints>
+   <children>
+      <VBox alignment="CENTER" prefHeight="297.0" prefWidth="758.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label opacity="0.8" prefHeight="118.0" prefWidth="281.0" text="20,13 zł" textAlignment="CENTER">
+                     <font>
+                        <Font size="80.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <JFXProgressBar cache="true" prefHeight="2.0" prefWidth="391.0" />
+         </children>
+      </VBox>
+      <HBox maxHeight="1.7976931348623157E308" prefHeight="280.0" prefWidth="700.0" style="-fx-background-color: #fff;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+         <children>
+            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="300.0" minWidth="300.0" prefHeight="100.0" prefWidth="300.0">
+               <children>
+                  <Label alignment="CENTER" opacity="0.8" prefHeight="21.0" prefWidth="374.0" text="Twój cel:samochód">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <JFXSpinner maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="200.0" prefHeight="114.0" prefWidth="249.0" progress="0.36" />
+                  <Label alignment="CENTER" opacity="0.8" prefHeight="21.0" prefWidth="348.0" text="Brakuje 7200zł">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="139.0" prefWidth="1076.0" />
+         </children>
+         <effect>
+            <DropShadow height="10.0" radius="4.5" width="10.0" />
+         </effect>
+      </HBox>
+      <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" GridPane.columnIndex="1">
+         <effect>
+            <DropShadow height="10.0" radius="4.5" width="10.0" />
+         </effect>
+         <children>
+            <Label opacity="0.7" prefHeight="73.0" prefWidth="758.0" styleClass="h1" text="Home">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Label>
+            <FontAwesomeIconView fill="#9a9a9a" glyphName="HOME" layoutX="14.0" layoutY="49.0" size="3em" />
+         </children>
+      </Pane>
+   </children>
+</GridPane>
