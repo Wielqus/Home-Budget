@@ -19,7 +19,7 @@ public class Main extends Application {
 
         Navigation.navigation = new Navigation(primaryStage);
 
-        primaryStage.setTitle("VA navigation");
+        primaryStage.setTitle("Home Budget");
         primaryStage.show();
 
         Navigation.getNavigation().load(LoginController.URL_FXML).Show();
