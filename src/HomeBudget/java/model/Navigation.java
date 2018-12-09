@@ -1,6 +1,7 @@
 package HomeBudget.java.model;
 
 import HomeBudget.java.controller.BaseController;
+import HomeBudget.java.controller.LoaderController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -63,6 +64,10 @@ public class Navigation {
     public static void load(String sUrl, BorderPane item) {
         Parent root;
         try {
+            
+            root = FXMLLoader.load(LoaderController.class.getResource(sUrl));
+            item.setCenter(root);
+            
             root = FXMLLoader.load(BaseController.class.getResource(sUrl));
             item.setCenter(root);
         } catch (Exception e) {
