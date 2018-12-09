@@ -1,5 +1,8 @@
 package HomeBudget.java.model;
 
+import HomeBudget.java.controller.BaseController;
+import HomeBudget.java.controller.LoginController;
+import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -9,6 +12,8 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 
 public class Navigation {
 
@@ -44,6 +49,16 @@ public class Navigation {
         return null;
     }
 
+    public static void load(String sUrl,BorderPane item){
+        Parent root;
+        try {
+            root = FXMLLoader.load(BaseController.class.getResource(sUrl));
+            item.setCenter(root);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void Show(Controller controller)
     {
         try {
@@ -57,6 +72,7 @@ public class Navigation {
         }
     }
 
+    
     public void GoBack()
     {
         if (controllers.size() > 1)

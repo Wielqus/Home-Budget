@@ -1,7 +1,7 @@
 package HomeBudget.java.controller;
 
-import HomeBudget.java.Main;
 import HomeBudget.java.model.Controller;
+import HomeBudget.java.model.Navigation;
 import javafx.scene.Node;
 
 
@@ -22,13 +22,13 @@ public class BaseController implements Controller {
     @Override
     public void Show() {
         PreShowing();
-        Main.getNavigation().Show(this);
+        Navigation.getNavigation().Show(this);
         PostShowing();
     }
 
     public void PreShowing()
     {
-
+       
     }
 
     public void PostShowing()

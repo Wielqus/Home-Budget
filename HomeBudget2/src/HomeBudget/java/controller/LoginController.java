@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package HomeBudget.java.controller;
 
-import HomeBudget.java.Main;
+import HomeBudget.java.model.Navigation;
+import HomeBudget.java.model.Session;
+import HomeBudget.java.model.Users;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -41,17 +38,25 @@ public class LoginController extends BaseController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }
 
     @FXML
     private void LoginAction(ActionEvent event) {
-
+        Integer user = Users.Login(LoginText.getText(), PasswordText.getText());
+        if(user !=0){
+            Session.getCurrentSession().add("user", user.toString());//add user id to session
+            Navigation.getNavigation().load(MainController.URL_FXML).Show();//load main view
+            return;
+        }else{
+            InfoLabel.setText("Podane dane są nieprawidłowe");
+            return;
+        }
+        
     }
 
     @FXML
     private void goToRegisterAction(ActionEvent event) throws IOException {
-        Main.getNavigation().load(RegisterController.URL_FXML).Show();
+        Navigation.getNavigation().load(RegisterController.URL_FXML).Show();
     }
 
 }

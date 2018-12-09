@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package HomeBudget.java.controller;
 
+import HomeBudget.java.model.Navigation;
+import HomeBudget.java.model.Users;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,15 +13,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-
 /**
  *
  * @author Wielq
  */
 public class RegisterController extends BaseController implements Initializable {
-    
+
     public static final String URL_FXML = "/HomeBudget/resources/view/register.fxml";
-    
+
     private Label label;
     @FXML
     private TextField LoginText;
@@ -36,35 +32,41 @@ public class RegisterController extends BaseController implements Initializable 
     private Label InfoLabel;
     @FXML
     private Button RegisterButton;
-    
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-     
-    }    
+
+    }
 
     @FXML
     private void RegisterAction(ActionEvent event) throws IOException {
         String Login = LoginText.getText();
         String Password = PasswordText.getText();
         String RPassword = RPasswordText.getText();
-        
-        if(Login.length()<4){
+
+        if (Login.length() < 4) {
             InfoLabel.setText("Login musi mieć minimum 4 znaki");
             return;
         }
-        if(Password.length()<6){
-            InfoLabel.setText("Hasło musi mieć minimum 6 znaków");
+        if (Password.length() < 8) {
+            InfoLabel.setText("Hasło musi mieć minimum 8 znaków");
             return;
         }
-        if(!Password.equals(RPassword)){
+        if (!Password.equals(RPassword)) {
             InfoLabel.setText("Podane hasła rożnią się");
             return;
         }
-
-        
-        
-        InfoLabel.setText("Wszystko ok");
+        if (Users.Register(Login, Password)) {
+            Navigation.getNavigation().load(LoginController.URL_FXML).Show();
+            return;
+        }
+        InfoLabel.setText("Podany użytkownik juz istnieje");
+        return;
     }
-    
+
+    @FXML
+    private void goToLoginAction(ActionEvent event) {
+        Navigation.getNavigation().load(LoginController.URL_FXML).Show();
+    }
+
 }
