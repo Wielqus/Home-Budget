@@ -12,6 +12,8 @@ This models have advantages like:
 * Easy to generate tables
 * Automatic pagination
 * Dynamic filtration and sorting
+* Responsive view, based on grid pattern
+
 
 
 
