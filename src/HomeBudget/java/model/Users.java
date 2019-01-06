@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -40,21 +41,20 @@ public class Users implements Serializable {
         this.password = password;
     }
 
-    public static int Login(String login, String password) {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-
+    public static  int Login(String login, String password) {
+        final org.hibernate.Session session = HibernateUtil.getSessionFactory().openSession();
+        List results = null;
         try {
             session.beginTransaction();
-            String hql = "SELECT user.id FROM Users user WHERE user.login=:login AND user.password=:password";
-            List<Integer> results = session.createQuery(hql)
-                    .setString("login", login)
-                    .setString("password", password)
-                    .setMaxResults(1)
-                    .list();
+             results = session.createCriteria(Users.class)
+                     .add(Restrictions.eq( "login", login ))
+                     .add(Restrictions.eq("password", password))
+                     .list();
             if (results.isEmpty()) {
                 return 0;
             }
-            return results.get(0);
+            Users user = (Users) results.iterator().next();
+            return user.getId();
         } catch (HibernateException e) {
             System.err.println(e);
             if (session.getTransaction() != null) {

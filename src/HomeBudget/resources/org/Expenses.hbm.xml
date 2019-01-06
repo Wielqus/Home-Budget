@@ -6,7 +6,7 @@
        <id name="id" type="int"/>
        <property name="id_main" type="int"/>
        <property name="name" type="string"/>
-       <property name="person" type="int"/>
+       <property name="price" type="double"/>
        <property name="category" type="int"/>      
        <property name="date" type="date"/>
    </class>

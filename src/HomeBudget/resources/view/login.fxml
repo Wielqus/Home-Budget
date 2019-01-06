@@ -45,7 +45,7 @@
             </Label>
             <PasswordField fx:id="PasswordText" promptText="Password" styleClass="RegisterInput" />
             <Label fx:id="InfoLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="398.0" styleClass="RegisterError" />
-            <Button fx:id="RegisterButton" alignment="CENTER" mnemonicParsing="false" onAction="#LoginAction" prefHeight="50.0" prefWidth="400.0" styleClass="RegisterButton" stylesheets="@../style/main.css" text="Login" textAlignment="CENTER">
+            <Button fx:id="RegisterButton" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#LoginAction" prefHeight="50.0" prefWidth="400.0" styleClass="RegisterButton" stylesheets="@../style/main.css" text="Login" textAlignment="CENTER">
                <VBox.margin>
                   <Insets />
                </VBox.margin>

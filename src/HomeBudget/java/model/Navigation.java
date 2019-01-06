@@ -2,6 +2,7 @@ package HomeBudget.java.model;
 
 import HomeBudget.java.controller.BaseController;
 import HomeBudget.java.controller.LoaderController;
+import HomeBudget.java.model.tableview.Table;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -11,9 +12,12 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import javafx.scene.layout.BorderPane;
+
 /**
  * Navigation is a class, who support navigation between fxml views
+ *
  * @author Wielq
  */
 public class Navigation {
@@ -34,10 +38,12 @@ public class Navigation {
         scene = new Scene(new Pane());
         stage.setScene(scene);
     }
+
     /**
      * Load fxml to primaryStage
+     *
      * @param sUrl url to fxml view
-     * @return 
+     * @return
      */
     public Controller load(String sUrl) {
         try {
@@ -56,23 +62,47 @@ public class Navigation {
         }
         return null;
     }
+
     /**
      * It Loads fxml view dynamically to BorderPane item
+     *
      * @param sUrl url to fxml view
-     * @param item 
+     * @param item
      */
-    public static void load(String sUrl, BorderPane item) {
+    public static synchronized void load(String sUrl, BorderPane item) {
         Parent root;
         try {
-            
-            root = FXMLLoader.load(LoaderController.class.getResource(sUrl));
-            item.setCenter(root);
-            
             root = FXMLLoader.load(BaseController.class.getResource(sUrl));
             item.setCenter(root);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public Controller openModal(String sUrl, Table table) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(sUrl));
+            Parent root = fxmlLoader.load();
+
+            Controller controller = fxmlLoader.getController();
+            
+            Scene scene = new Scene(root, 800, 400);
+            Stage stage = new Stage();
+            stage.setOnHiding(event -> {
+                table.load();
+            });
+            stage.setScene(scene);
+            stage.show();
+            
+            
+
+            return controller;
+            
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+        
+        return null;
     }
 
     public void Show(Controller controller) {

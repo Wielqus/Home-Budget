@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="758.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="758.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeBudget.java.controller.HomeController">
   <columnConstraints>
     <ColumnConstraints />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -39,7 +39,7 @@
             <JFXProgressBar cache="true" prefHeight="2.0" prefWidth="391.0" />
          </children>
       </VBox>
-      <HBox maxHeight="1.7976931348623157E308" prefHeight="280.0" prefWidth="700.0" style="-fx-background-color: #fff;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+      <HBox maxHeight="1.7976931348623157E308" prefHeight="280.0" prefWidth="700.0" style="-fx-background-color: #ffffff;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
          <children>
             <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="300.0" minWidth="300.0" prefHeight="100.0" prefWidth="300.0">
                <children>
@@ -62,7 +62,7 @@
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
       </HBox>
-      <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" GridPane.columnIndex="1">
+      <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" GridPane.columnIndex="1">
          <effect>
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
@@ -75,7 +75,7 @@
                   <Insets left="50.0" />
                </padding>
             </Label>
-            <FontAwesomeIconView fill="#9a9a9a" glyphName="HOME" layoutX="14.0" layoutY="49.0" size="3em" />
+            <FontAwesomeIconView fx:id="homeIcon" fill="#9a9a9a" glyphName="HOME" layoutX="14.0" layoutY="49.0" size="3em" />
          </children>
       </Pane>
    </children>

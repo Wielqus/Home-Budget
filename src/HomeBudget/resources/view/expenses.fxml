@@ -21,7 +21,7 @@
     <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="450.0" valignment="TOP" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <VBox maxWidth="1.7976931348623157E308" prefHeight="80.0" prefWidth="831.0" style="-fx-background-color: #fff;">
+      <VBox maxWidth="1.7976931348623157E308" prefHeight="80.0" prefWidth="831.0" style="-fx-background-color: #ffffff;">
          <children>
             <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="80.0" prefHeight="80.0" prefWidth="712.0">
                <children>
@@ -36,7 +36,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="RIGHT" prefHeight="51.0" prefWidth="58.0" ripplerFill="BLACK" styleClass="addButton" text="+">
+                  <JFXButton fx:id="addExpensesButton" alignment="CENTER" buttonType="RAISED" contentDisplay="RIGHT" onAction="#addExpenses" prefHeight="51.0" prefWidth="58.0" ripplerFill="BLACK" styleClass="addButton" text="+">
                      <font>
                         <Font size="24.0" />
                      </font>

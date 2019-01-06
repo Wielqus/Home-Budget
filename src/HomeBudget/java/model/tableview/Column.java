@@ -24,8 +24,9 @@ public class Column {
      * @param column in query
      * @param table 
      */
-    public void addInputFilter(String column, Table table) {
+    public void addInputFilter(String column, Table table,String placeholder) {
         TextField filter = new TextField();
+        filter.setPromptText(placeholder == null ? "" : placeholder);
         filter.setOnKeyReleased(e -> {
             this.filters = "";
             if (filter.getText().length() != 0) {

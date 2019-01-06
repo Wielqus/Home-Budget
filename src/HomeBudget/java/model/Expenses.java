@@ -2,10 +2,20 @@ package HomeBudget.java.model;
 
 import HomeBudget.java.hibernate.util.HibernateUtil;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,15 +26,24 @@ import org.hibernate.Session;
  *
  * @author Wielq
  */
+@Entity
+@Table(name = "Expenses")
 
 public class Expenses implements Serializable {
-
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
     private int id;
+    @Column(name = "id_main")
     private int id_main;
+    @Column(name = "name")
     private String name;
-    private int person;
-    private int category;
-    private Date date;
+    @Column(name = "price")
+    private double price;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private ExpensesCategory category;
+    @Column(name="Date")
+    private java.sql.Date date;
 
     public int getId() {
         return id;
@@ -50,47 +69,47 @@ public class Expenses implements Serializable {
         this.name = name;
     }
 
-    public int getCategory() {
+    public ExpensesCategory getCategory() {
         return category;
     }
 
-    public void setCategory(int category) {
-        this.category = category;
+    public void setCategory(ExpensesCategory category) {
+        this.category =  category;
     }
 
-    public int getPerson() {
-        return person;
+    public double getPrice() {
+        return price;
     }
 
-    public void setPerson(int person) {
-        this.person = person;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public Date getDate() {
+    public java.sql.Date getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(java.sql.Date date) {
         this.date = date;
     }
+
     /**
      * It Returns list of expenses,which belongs to user with
+     *
      * @param user id user
      * @param limit max numbers of expenses
-     * @param filters 
-     * @param page 
+     * @param filters
+     * @param page
      * @return List
      */
-    public static List getExpenses(int user, int limit, String filters, int page) {
+    public static  List getExpenses(int user, int limit, String filters, int page) {
         final Session session = HibernateUtil.getSessionFactory().openSession();
         List results = null;
         try {
             session.beginTransaction();
-            String hql = "SELECT e.id,e.name,e.category,e.person,e.date FROM Expenses e  WHERE e.id_main=:user "+ filters + " ORDER BY e.date DESC";
-            results = session.createQuery(hql)
-                    .setParameter("user", user)
-                    .setMaxResults(10)
-                    .setFirstResult((page - 1) * limit)
+            results = session.createCriteria(Expenses.class)
+                    .setFirstResult((page-1)*limit)
+                    .setMaxResults(limit)
                     .list();
         } catch (HibernateException e) {
             System.err.println(e);
@@ -102,20 +121,21 @@ public class Expenses implements Serializable {
         }
         return results;
     }
+
     /**
      * It returns number of expenses,which belongs to user
+     *
      * @param user id user
      * @param filters
-     * @return 
+     * @return
      */
-    public static long getCount(int user, String filters) {
+    public static synchronized long getCount(int user, String filters) {
         final Session session = HibernateUtil.getSessionFactory().openSession();
         long count = 0;
         try {
             session.beginTransaction();
-            String hql = "SELECT count(*) FROM Expenses e WHERE e.id_main=:user  " + filters;
-            count = (long) session.createQuery(hql)
-                    .setParameter("user", user)
+            count = (long)session.createCriteria(Expenses.class)
+                    .setProjection(Projections.rowCount())
                     .uniqueResult();
         } catch (HibernateException e) {
             System.err.println(e);
@@ -127,4 +147,79 @@ public class Expenses implements Serializable {
         }
         return count;
     }
+    
+    public static void insertExpense(int idUser, String name, double price, int category, java.sql.Date date) {
+
+        final Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+
+            Expenses expense = new Expenses();
+            expense.setId_main(idUser);
+            expense.setName(name);
+            expense.setPrice(price);
+            //expense.setCategory(category);
+            expense.setDate(date);
+
+            session.save(expense);
+
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            System.err.println(e);
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
+        } finally {
+            session.close();
+        }
+
+    }
+    
+    public static void editExpense(int idExpense,int idUser, String name, double price, int category, java.sql.Date date) {
+
+        final Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+
+            Expenses expense = (Expenses) session.get(Expenses.class,idExpense);
+            expense.setId_main(idUser);
+            expense.setName(name);
+            expense.setPrice(price);
+            //expense.setCategory(category);
+            expense.setDate(date);
+
+            session.save(expense);
+
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            System.err.println(e);
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
+        } finally {
+            session.close();
+        }
+
+    }
+    
+    public static void deleteExpense(int id){
+         final Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+
+            Expenses expense = (Expenses) session.get(Expenses.class,id);
+
+            session.delete(expense);
+
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            System.err.println(e);
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
+        } finally {
+            session.close();
+        }
+    }
+
 }
