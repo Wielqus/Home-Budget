@@ -41,20 +41,24 @@ public class Users implements Serializable {
         this.password = password;
     }
 
-    public static  int Login(String login, String password) {
+    /**
+     *
+     * @param login
+     * @param password
+     * @return
+     */
+    public static  Users Login(String login, String password) {
         final org.hibernate.Session session = HibernateUtil.getSessionFactory().openSession();
-        List results = null;
         try {
             session.beginTransaction();
-             results = session.createCriteria(Users.class)
+             List results = session.createCriteria(Users.class)
                      .add(Restrictions.eq( "login", login ))
                      .add(Restrictions.eq("password", password))
                      .list();
-            if (results.isEmpty()) {
-                return 0;
-            }
-            Users user = (Users) results.iterator().next();
-            return user.getId();
+             if(results.isEmpty()){
+                 return null;
+             }
+            return (Users)results.get(0);
         } catch (HibernateException e) {
             System.err.println(e);
             if (session.getTransaction() != null) {
@@ -63,20 +67,24 @@ public class Users implements Serializable {
         } finally {
 
         }
-        return 0;
+        return null;
     }
 
+    /**
+     *
+     * @param login
+     * @param password
+     * @return
+     */
     public static boolean Register(String login, String password) {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-
+        final org.hibernate.Session session = HibernateUtil.getSessionFactory().openSession();
+        List results = null;
         try {
             session.beginTransaction();
             
-            String hql = "SELECT user.id FROM Users user WHERE user.login=:login";
-            List<Integer> results = session.createQuery(hql)
-                    .setString("login", login)
-                    .setMaxResults(1)
-                    .list();
+            results = session.createCriteria(Users.class)
+                      .add(Restrictions.eq( "login", login ))
+                        .list();
             if (!results.isEmpty()) {
                 return false;
             }

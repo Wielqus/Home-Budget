@@ -59,7 +59,13 @@ public class AddexpensesController extends BaseController implements Initializab
      * Initializes the controller class.
      */
     @Override
+    /**
+     *Set default values in fields
+     */
     public void initialize(URL url, ResourceBundle rb) {
+        dateField.setEditable(false);
+        
+        
         dateField.setValue(LocalDate.now());
         Iterator list = ExpensesCategory.getExpensesCategory().iterator();
         if (list != null) {
@@ -118,9 +124,9 @@ public class AddexpensesController extends BaseController implements Initializab
             java.sql.Date date = java.sql.Date.valueOf(dateField.getValue());
             int id = Integer.parseInt(idField.getText());
             if (id == 0) {
-                //Expenses.insertExpense(Integer.parseInt(Session.getCurrentSession().get("user")), name, price, category, date);
+                Expenses.insertExpense(Integer.parseInt(Session.getCurrentSession().get("user")), name, price, category, date);
             }else{
-               // Expenses.editExpense(id,Integer.parseInt(Session.getCurrentSession().get("user")), name, price, category, date);
+                Expenses.editExpense(id,Integer.parseInt(Session.getCurrentSession().get("user")), name, price, category, date);
             }
 
         } catch (Exception e) {
@@ -130,6 +136,14 @@ public class AddexpensesController extends BaseController implements Initializab
         }
     }
 
+    /**
+     *
+     * @param id-Expense id
+     * @param name-Expense name
+     * @param price-Expense price
+     * @param date-Expense date
+     * @param category-Expense category
+     */
     public void setForm(int id, String name, double price, java.sql.Date date, int category) {
         textFormatter.setValue(price);
         nameField.setText(name);

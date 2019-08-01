@@ -14,7 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-
 /**
  * FXML Controller class
  *
@@ -23,7 +22,7 @@ import javafx.scene.control.TextField;
 public class LoginController extends BaseController implements Initializable {
 
     public static final String URL_FXML = "/HomeBudget/resources/view/login.fxml";
-    
+
     @FXML
     private TextField LoginText;
     @FXML
@@ -43,16 +42,17 @@ public class LoginController extends BaseController implements Initializable {
 
     @FXML
     private void LoginAction(ActionEvent event) {
-        Integer user = Users.Login(LoginText.getText(), PasswordText.getText());
-        if(user !=0){
-            Session.getCurrentSession().add("user", user.toString());//add user id to session
+        Users user = Users.Login(LoginText.getText(), PasswordText.getText());
+        if (user != null) {
+            Session.getCurrentSession().add("user", String.valueOf(user.getId()));//add user id to session
+            Session.getCurrentSession().add("userLogin", user.getLogin());//add user id to session
             Navigation.getNavigation().load(MainController.URL_FXML).Show();//load main view
             return;
-        }else{
+        } else {
             InfoLabel.setText("Podane dane są nieprawidłowe");
             return;
         }
-        
+
     }
 
     @FXML

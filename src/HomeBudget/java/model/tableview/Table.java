@@ -27,7 +27,7 @@ public class Table {
     protected Pagination pagination;
 
     protected int limit = 10;//default limit
-    protected String filters = "";//default filters
+    protected ArrayList filters=new ArrayList();//default filters
     /**
      * Create Table,initialize pagination
      */
@@ -43,11 +43,12 @@ public class Table {
      * @param columns 
      */
     protected void setColumns(Column... columns) {
-        RowConstraints Row = new RowConstraints(50, 50, Double.MAX_VALUE);
+        RowConstraints Row = new RowConstraints(50, 120, Double.MAX_VALUE);
         Row.setVgrow(Priority.ALWAYS);
+        Row.setFillHeight(true);
         table.getRowConstraints().add(rows.size(), Row);
         for (Column column : columns) {
-            ColumnConstraints columnC = new ColumnConstraints(50, 100, Double.MAX_VALUE);
+            ColumnConstraints columnC = new ColumnConstraints(50, 120, Double.MAX_VALUE);
             columnC.setHalignment(HPos.CENTER);
             columnC.setPercentWidth(100.0 / columns.length);
             table.getColumnConstraints().add(this.columns.size(), columnC);
@@ -61,7 +62,7 @@ public class Table {
      * @param cell 
      */
     protected void addRow(Cell... cell) {
-        RowConstraints Row = new RowConstraints(30, 50, Double.MAX_VALUE);
+        RowConstraints Row = new RowConstraints(30, 60, Double.MAX_VALUE);
         Row.setVgrow(Priority.ALWAYS);
         Row.setFillHeight(true);
         table.getRowConstraints().add(rows.size(), Row);
@@ -84,7 +85,7 @@ public class Table {
      * It cleans table,clean filters,and removes data rows
      */
     protected void clean() {
-        this.filters = "";
+        this.filters.clear();
         while (table.getRowConstraints().size() > 1) {
             table.getRowConstraints().remove(rows.size() - 1);
             rows.remove(rows.size() - 1);
@@ -93,7 +94,7 @@ public class Table {
             table.getChildren().remove(table.getChildren().size() - 1);
         }
         for (Column column : columns) {
-            filters += column.getFilter();
+            filters.add(column.getFilter());
         }
     }
 

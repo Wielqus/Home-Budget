@@ -1,0 +1,15 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+       "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping >
+   <class name="HomeBudget.java.model.Incomes" table="Incomes">
+       <id name="id" type="int"/>
+       <property name="id_main" type="int"/>
+       <property name="name" type="string"/>
+       <property name="price" type="double"/>
+       <many-to-one name="category" class="HomeBudget.java.model.IncomesCategory" fetch="join">
+            <column name="category" />
+        </many-to-one>    
+       <property name="date" type="date"/>
+   </class>
+</hibernate-mapping>

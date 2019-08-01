@@ -1,18 +1,10 @@
 package HomeBudget.java.model.tableview;
 
-import HomeBudget.java.model.*;
 import com.jfoenix.controls.JFXButton;
-import javafx.geometry.Insets;
 import javafx.scene.Cursor;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.LabelBuilder;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
 /**
  * This class describe one row in table
@@ -25,22 +17,38 @@ public class Cell {
     public Cell(){
        this.box.getStyleClass().add("table-cell");        
     }
-    
-    public void SimpleLabelCell(String name){      
-        box.getChildren().add(LabelBuilder.create().text(name).wrapText(true).build());  
+
+    /**
+     * Add style class to cell
+     * @return Cell
+     */
+    public Cell addClass(String className){
+        this.box.getStyleClass().add(className);   
+        return this;
     }
-    
+
+    /**
+     * Add label to cell
+     * @return
+     */
+    public Cell SimpleLabelCell(String name){      
+        box.getChildren().add(LabelBuilder.create().text(name).wrapText(true).build());  
+        return this;
+    }
+
+
     public void addRowButton(JFXButton button){
         button.setCursor(Cursor.HAND);
         box.getChildren().add(button);
     }
-    
+
+
     public void addRowButton(Button button){
         button.setCursor(Cursor.HAND);
         box.getChildren().add(button);
     }
-    
-    
+
+
     public HBox getCell(){
         return this.box;       
     }

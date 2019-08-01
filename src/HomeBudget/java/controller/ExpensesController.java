@@ -2,6 +2,7 @@ package HomeBudget.java.controller;
 
 import HomeBudget.java.model.Navigation;
 import HomeBudget.java.model.tableview.ExpensesTableView;
+import HomeBudget.java.model.tableview.Table;
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -35,7 +36,7 @@ public class ExpensesController extends BaseController implements Initializable 
          * Create and show ExpensesTableView
          */
         table.load();   
-        Grid.add(table.getTable(), 0, 1);
+        Grid.add(table.getTable(), 0, 2);
     }
 
     @FXML

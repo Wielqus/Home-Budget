@@ -37,9 +37,9 @@ public class MainController extends BaseController implements Initializable {
     @FXML
     private HBox raportsButton;
     @FXML
-    private HBox historyButton;
-    @FXML
     private Label userLabel;
+    @FXML
+    private HBox logOutButton;
 
     /**
      * Initializes the controller class.
@@ -47,6 +47,7 @@ public class MainController extends BaseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Navigation.load(HomeController.URL_FXML, MainView);
+        userLabel.setText(Session.getCurrentSession().get("userLogin"));
     }
 
     /**
@@ -59,7 +60,6 @@ public class MainController extends BaseController implements Initializable {
         incomeButton.getStyleClass().remove("positive");
         expensesButton.getStyleClass().remove("positive");
         raportsButton.getStyleClass().remove("positive");
-        historyButton.getStyleClass().remove("positive");
 
         button.getStyleClass().add("positive");
     }
@@ -82,16 +82,20 @@ public class MainController extends BaseController implements Initializable {
         this.tooggleColor(expensesButton);
     }
 
-    @FXML
-    private void goToHistory(MouseEvent event) {
-         Navigation.load(HistoryController.URL_FXML, MainView);
-        this.tooggleColor(historyButton);
-    }
+    
 
     @FXML
     private void goToRaports(MouseEvent event) {
         Navigation.load(RaportsController.URL_FXML, MainView);
         this.tooggleColor(raportsButton);
+    }
+
+    @FXML
+    private void logOut(MouseEvent event) {
+        Session.getCurrentSession().delete("user");
+        Session.getCurrentSession().delete("userLogin");
+        Navigation.getNavigation().load(LoginController.URL_FXML).Show();
+        
     }
 
 }

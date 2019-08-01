@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>    
+        <!-- Database connection properties - Driver, URL, user, password -->
+        <property name = "hibernate.dialect">
+            org.hibernate.dialect.MySQLDialect
+        </property>
+      
+        <property name = "hibernate.connection.driver_class">
+            com.mysql.jdbc.Driver
+        </property>
+      
+        <!-- Assume test is the database name -->
+      
+        <property name = "hibernate.connection.url">
+            jdbc:mysql://mysql33.mydevil.net/m1232_HomeBudget
+        </property>
+      
+        <property name = "hibernate.connection.username">
+            m1232_Wielqus
+        </property>
+      
+        <property name = "hibernate.connection.password">
+            Carpediem8
+        </property>
+
+        <!-- mapping file, we can use Bean annotations too -->
+        <mapping resource="HomeBudget/resources/org/Users.hbm.xml"/>
+        <mapping resource="HomeBudget/resources/org/Expenses.hbm.xml"/>
+        <mapping resource="HomeBudget/resources/org/ExpensesCategory.hbm.xml"/>
+        <mapping resource="HomeBudget/resources/org/Incomes.hbm.xml"/>
+        <mapping resource="HomeBudget/resources/org/IncomesCategory.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

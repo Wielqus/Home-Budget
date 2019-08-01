@@ -39,7 +39,7 @@ public class RegisterController extends BaseController implements Initializable 
     }
 
     @FXML
-    private void RegisterAction(ActionEvent event) throws IOException {
+    private void RegisterAction(ActionEvent event)  {
         String Login = LoginText.getText();
         String Password = PasswordText.getText();
         String RPassword = RPasswordText.getText();

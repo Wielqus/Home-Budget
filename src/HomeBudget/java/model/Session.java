@@ -25,6 +25,11 @@ public class Session {
         return null;
     }
 
+    /**
+     *
+     * @param key
+     * @param value
+     */
     public void add(String key, String value) {
         try {
             data.put(key, value);
@@ -34,6 +39,11 @@ public class Session {
 
     }
 
+    /**
+     *
+     * @param key
+     * @return
+     */
     public String get(String key) {
         try {
             return data.get(key);
@@ -43,5 +53,16 @@ public class Session {
         return "";
     }
 
+    /**
+     *
+     * @param key
+     */
+    public void delete(String key){
+        try {
+            data.remove(key);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
 
 }
